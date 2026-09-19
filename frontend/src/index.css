@@ -1,0 +1,692 @@
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* ─── Darukaa.Earth Environmental Foundation ─── */
+  /* Three distinct depth layers — base / surface / elevated */
+  --bg-base:              #050b07;
+  --bg-surface:           #0a1210;
+  --bg-surface-elevated:  #131d17;
+  --bg-surface-hover:     #1a241e;
+  /* Flat panel zone — slightly lighter than surface, NO border radius required */
+  --bg-panel-flat:        #0e1812;
+  /* Dark inset — for data tables, nested content blocks */
+  --bg-inset:             #070e09;
+  --bg-subtle:            rgba(180, 220, 190, 0.025);
+  --bg-input:             #070d09;
+
+  /* Borders — three levels, forest-tinted */
+  --border-subtle:  rgba(180, 220, 190, 0.065);
+  --border-default: rgba(180, 220, 190, 0.115);
+  --border-strong:  rgba(180, 220, 190, 0.20);
+  --border-active:  #10b981;
+  /* Section rule — stronger divider for zone separators */
+  --section-rule:   rgba(180, 220, 190, 0.09);
+
+  /* Muted Emerald — Primary Actions, Verified Carbon */
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-muted:  rgba(16, 185, 129, 0.08);
+  --emerald-zone:   rgba(16, 185, 129, 0.05);
+  --emerald-border: rgba(16, 185, 129, 0.22);
+
+  /* Deep Forest — Identity Backgrounds */
+  --forest-dark:    #031b14;
+  --forest-deep:    #062f23;
+  --forest-surface: #0a3d2e;
+
+  /* Muted Teal — Water, Estuaries, Telemetry Streams */
+  --teal-500:   #0d9488;
+  --teal-600:   #0f766e;
+  --teal-muted: rgba(13, 148, 136, 0.08);
+  --teal-zone:  rgba(13, 148, 136, 0.045);
+  --teal-border: rgba(13, 148, 136, 0.20);
+
+  /* Atmosphere Sky — Satellite, Global Coverage */
+  --sky-500:   #0284c7;
+  --sky-muted: rgba(2, 132, 199, 0.08);
+  --sky-border: rgba(2, 132, 199, 0.20);
+
+  /* Earth/Sand — Land Area, Agroforestry, Geodesic */
+  --earth-500:   #c29b68;
+  --earth-600:   #a88350;
+  --earth-muted: rgba(194, 155, 104, 0.09);
+  --earth-zone:  rgba(194, 155, 104, 0.04);
+  --earth-border: rgba(194, 155, 104, 0.22);
+
+  /* Amber — Peatland, Biodiversity Warning */
+  --amber-500:   #d97706;
+  --amber-muted: rgba(217, 119, 6, 0.08);
+  --amber-zone:  rgba(217, 119, 6, 0.04);
+  --amber-border: rgba(217, 119, 6, 0.22);
+
+  /* Rose — Errors & Alerts */
+  --rose-500:   #e11d48;
+  --rose-muted: rgba(225, 29, 72, 0.08);
+  --rose-border: rgba(225, 29, 72, 0.22);
+
+  /* Typography — warm off-white primary, sage-gray secondary */
+  --text-main:  #e8ede9;
+  --text-muted: #7d9e8d;
+  --text-faint: #4d6659;
+
+  /* Forest-tinted shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 8, 4, 0.40);
+  --shadow-md: 0 4px 12px rgba(0, 8, 4, 0.55);
+  --shadow-lg: 0 12px 32px rgba(0, 8, 4, 0.70);
+
+  /* Corner Radii — restrained, 8–12px range */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+
+  /* Precision Motion */
+  --transition-fast:   150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.52;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'tnum' on, 'cv02' on;
+}
+
+/* Clear typographic hierarchy */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.2;
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-main);
+}
+
+/* Label/caps utility — for section headers, stat labels */
+.label-caps {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--text-faint);
+  line-height: 1.2;
+}
+
+/* Metric value — large tabular number for KPIs */
+.metric-value {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+/* Left-border accent utilities for stat cards and site cards */
+.accent-emerald {
+  border-left: 2px solid var(--emerald-500);
+}
+.accent-teal {
+  border-left: 2px solid var(--teal-500);
+}
+.accent-earth {
+  border-left: 2px solid var(--earth-500);
+}
+.accent-amber {
+  border-left: 2px solid var(--amber-500);
+}
+.accent-sky {
+  border-left: 2px solid var(--sky-500);
+}
+
+/* Nav link hover — CSS alternative to inline JS onMouseEnter/Leave */
+.link-hover {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.link-hover:hover {
+  color: var(--text-main);
+}
+
+/* StatCard icon container — brightens on parent card hover */
+.stat-icon-box {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.card-interactive:hover .stat-icon-box {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: var(--border-default);
+}
+
+/* Base Panel Style */
+.glass-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-icon-danger {
+  color: var(--text-faint);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-icon-danger:hover {
+  color: #f87171 !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+
+/* Action Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background-color: var(--emerald-600);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.86rem;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--emerald-500);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.btn-primary:hover {
+  background-color: var(--emerald-700);
+  border-color: var(--emerald-600);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.18);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 4px var(--emerald-500);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.86rem;
+  padding: 7px 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  text-decoration: none;
+  line-height: 1.25;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--border-strong);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-base), 0 0 0 4px rgba(180, 220, 190, 0.35);
+}
+
+.btn-secondary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--rose-muted);
+  color: #fb7185;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--rose-border);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-danger:hover {
+  background-color: rgba(225, 29, 72, 0.16);
+  border-color: rgba(225, 29, 72, 0.4);
+}
+
+/* Precision Form Controls */
+.input-field {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input-field:focus {
+  border-color: var(--emerald-500);
+  background-color: var(--bg-surface-elevated);
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.22);
+}
+
+.input-field::placeholder {
+  color: var(--text-faint);
+}
+
+select.input-field {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 36px;
+}
+
+/* Badges - Subtle, Environmental, Clear Status */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.badge-emerald {
+  background-color: var(--emerald-muted);
+  color: #34d399;
+  border: 1px solid var(--emerald-border);
+}
+
+.badge-teal {
+  background-color: var(--teal-muted);
+  color: #2dd4bf;
+  border: 1px solid var(--teal-border);
+}
+
+.badge-blue {
+  background-color: var(--sky-muted);
+  color: #38bdf8;
+  border: 1px solid var(--sky-border);
+}
+
+.badge-earth {
+  background-color: var(--earth-muted);
+  color: var(--earth-500);
+  border: 1px solid var(--earth-border);
+}
+
+.badge-amber {
+  background-color: var(--amber-muted);
+  color: #fbbf24;
+  border: 1px solid var(--amber-border);
+}
+
+.badge-subtle {
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Precision Dialogs & Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 8, 5, 0.84);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  animation: modalOverlayFade 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.modal-overlay-closing {
+  animation: modalOverlayFadeOut 160ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.modal-content {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalScaleUp 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalOverlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalOverlayFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalScaleDown {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+}
+
+.modal-content.modal-content-closing {
+  animation: modalScaleDown 160ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+/* Custom Precision Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(9, 13, 15, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Mapbox Minimal Professional Overrides */
+.mapboxgl-popup-content {
+  background: var(--bg-surface-elevated) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 12px 14px !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-family: var(--font-sans) !important;
+}
+
+.mapboxgl-popup-close-button {
+  color: var(--text-muted) !important;
+  padding: 4px 6px !important;
+  font-size: 15px !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  background: transparent !important;
+  color: var(--text-main) !important;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: var(--bg-surface-elevated) !important;
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: var(--bg-surface-elevated) !important;
+}
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: var(--bg-surface-elevated) !important;
+}
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: var(--bg-surface-elevated) !important;
+}
+
+.mapboxgl-ctrl-group {
+  background: var(--bg-surface-elevated) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.mapboxgl-ctrl-group button {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.mapboxgl-ctrl-group button:hover {
+  background: var(--bg-surface-hover) !important;
+}
+
+.mapbox-gl-draw_ctrl-draw-btn {
+  background-color: var(--bg-surface-elevated) !important;
+}
+
+/* ─── Structural Layout Zones ─── */
+
+/* Metric Strip: Header KPI summary zone */
+.metric-strip {
+  background-color: var(--bg-panel-flat);
+  border-bottom: 1px solid var(--section-rule);
+  display: flex;
+  align-items: stretch;
+}
+
+.metric-strip-item {
+  flex: 1;
+  padding: 14px 20px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.metric-strip-item:last-child {
+  border-right: none;
+}
+
+.metric-strip-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-faint);
+  line-height: 1.2;
+}
+
+.metric-strip-value {
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text-main);
+}
+
+.metric-strip-sub {
+  font-size: 0.68rem;
+  color: var(--text-faint);
+  line-height: 1.3;
+  margin-top: 1px;
+}
+
+/* Section Zone: Left-accented content container */
+.section-zone {
+  background-color: var(--bg-panel-flat);
+  border-top: 1px solid var(--section-rule);
+  border-bottom: 1px solid var(--section-rule);
+  padding: 14px 20px;
+  border-left: 3px solid var(--border-default);
+}
+
+/* Ecosystem-type accent variants for .section-zone */
+.section-zone.eco-emerald {
+  border-left-color: var(--emerald-500);
+  background-color: color-mix(in srgb, var(--bg-panel-flat) 95%, var(--emerald-zone));
+}
+
+.section-zone.eco-teal {
+  border-left-color: var(--teal-500);
+  background-color: color-mix(in srgb, var(--bg-panel-flat) 95%, var(--teal-zone));
+}
+
+.section-zone.eco-earth {
+  border-left-color: var(--earth-500);
+  background-color: color-mix(in srgb, var(--bg-panel-flat) 95%, var(--earth-zone));
+}
+
+.section-zone.eco-amber {
+  border-left-color: var(--amber-500);
+  background-color: color-mix(in srgb, var(--bg-panel-flat) 95%, var(--amber-zone));
+}
+
+/* ─── Section Header Row ───
+   A labelled horizontal rule that separates major page sections.
+   Not a card — just a text label with a decorative rule. */
+.section-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.section-header-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--section-rule);
+}
+
+.section-header-label {
+  font-size: 0.64rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Data Inset ───
+   Dark nested surface for data tables and raw telemetry records.
+   Goes inside glass-panel or section-zone without adding more border-radius. */
+.data-inset {
+  background-color: var(--bg-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+}
+
+/* ─── Table row hover using CSS (replaces onMouseEnter/Leave) ─── */
+.data-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.data-table tbody tr:hover {
+  background-color: rgba(180, 220, 190, 0.03);
+}
+
+/* ─── Eco-accent left-border utility (for project cards, biome items) ─── */
+.eco-left-emerald { border-left: 3px solid var(--emerald-500); }
+.eco-left-teal    { border-left: 3px solid var(--teal-500); }
+.eco-left-earth   { border-left: 3px solid var(--earth-500); }
+.eco-left-amber   { border-left: 3px solid var(--amber-500); }
+
+/* ─── Prefers Reduced Motion Safety ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

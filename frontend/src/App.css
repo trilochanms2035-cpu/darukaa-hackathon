@@ -1,0 +1,304 @@
+/* Darukaa.Earth Platform Shared Animation & Layout Utilities */
+
+/* Smooth, Restrained Page Entrance */
+.page-enter {
+  animation: pageEnterFade 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEnterFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle Card Interactive Hover */
+.card-interactive {
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  will-change: transform;
+}
+
+.card-interactive:hover {
+  border-color: var(--border-default) !important;
+  background-color: var(--bg-surface-elevated) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 10, 5, 0.45);
+}
+
+/* Navbar */
+.app-navbar {
+  background-color: rgba(12, 20, 16, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(180, 220, 190, 0.09);
+}
+
+.modal-close-btn {
+  color: var(--text-faint);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Ecosystem Filter Pill */
+.filter-btn-active {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: var(--emerald-border) !important;
+  color: #34d399 !important;
+}
+
+/* Analytics Tab */
+.tab-underline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-bottom-color var(--transition-fast);
+  white-space: nowrap;
+  border-radius: 0;
+}
+
+.tab-underline:hover {
+  color: var(--text-main);
+}
+
+.tab-underline.tab-underline-active {
+  color: var(--text-main);
+  border-bottom-color: var(--emerald-500);
+}
+
+/* Site card in sidebar — left border accent on hover */
+.site-card-hover {
+  border-left: 2px solid transparent;
+  transition: border-left-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-card-hover:hover {
+  border-left-color: var(--emerald-500);
+  background-color: var(--bg-surface-elevated) !important;
+  transform: translateX(1px);
+}
+
+/* Tab Content Entrance — smooth fade + slight slide on tab switch */
+.tab-content-enter {
+  animation: tabEnter 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stat card entrance stagger — applied to the KPI grid on Dashboard and SiteDetailPage */
+.stat-stagger > *:nth-child(1) { animation: statCardEnter 200ms 0ms   both cubic-bezier(0.16, 1, 0.3, 1); }
+.stat-stagger > *:nth-child(2) { animation: statCardEnter 200ms 40ms  both cubic-bezier(0.16, 1, 0.3, 1); }
+.stat-stagger > *:nth-child(3) { animation: statCardEnter 200ms 80ms  both cubic-bezier(0.16, 1, 0.3, 1); }
+.stat-stagger > *:nth-child(4) { animation: statCardEnter 200ms 120ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.stat-stagger > *:nth-child(5) { animation: statCardEnter 200ms 160ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.stat-stagger > *:nth-child(6) { animation: statCardEnter 200ms 200ms both cubic-bezier(0.16, 1, 0.3, 1); }
+
+@keyframes statCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Project card grid stagger — applied to the filteredProjects grid wrapper */
+.card-grid-stagger > *:nth-child(1)  { animation: statCardEnter 220ms 0ms   both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(2)  { animation: statCardEnter 220ms 50ms  both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(3)  { animation: statCardEnter 220ms 100ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(4)  { animation: statCardEnter 220ms 150ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(5)  { animation: statCardEnter 220ms 200ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(6)  { animation: statCardEnter 220ms 240ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(7)  { animation: statCardEnter 220ms 280ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(8)  { animation: statCardEnter 220ms 320ms both cubic-bezier(0.16, 1, 0.3, 1); }
+.card-grid-stagger > *:nth-child(9)  { animation: statCardEnter 220ms 360ms both cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* Draw hint toast — floating instruction overlay on the map */
+.draw-hint-toast {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-main);
+  box-shadow: var(--shadow-lg);
+  animation: toastEnter 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@keyframes toastEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Active Live Pulse for Satellite Telemetry */
+.telemetry-pulse {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--emerald-500);
+  flex-shrink: 0;
+}
+
+.telemetry-pulse::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  border: 1px solid var(--emerald-500);
+  opacity: 0.6;
+  animation: radarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Spin utility for loading icons */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Field Ops Grid Overlay Background */
+.geo-grid-backdrop {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Topographic contour subtle texture for login left column */
+.topo-backdrop {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cellipse cx='200' cy='200' rx='180' ry='70' fill='none' stroke='rgba(16,185,129,0.055)' stroke-width='1'/%3E%3Cellipse cx='200' cy='200' rx='140' ry='50' fill='none' stroke='rgba(16,185,129,0.05)' stroke-width='1'/%3E%3Cellipse cx='200' cy='200' rx='100' ry='35' fill='none' stroke='rgba(16,185,129,0.04)' stroke-width='1'/%3E%3Cellipse cx='200' cy='200' rx='60' ry='20' fill='none' stroke='rgba(16,185,129,0.035)' stroke-width='1'/%3E%3Cellipse cx='200' cy='200' rx='25' ry='9' fill='none' stroke='rgba(16,185,129,0.03)' stroke-width='1'/%3E%3Cellipse cx='200' cy='200' rx='190' ry='90' fill='none' stroke='rgba(16,185,129,0.03)' stroke-width='1'/%3E%3Cellipse cx='120' cy='140' rx='90' ry='40' fill='none' stroke='rgba(16,185,129,0.03)' stroke-width='1'/%3E%3Cellipse cx='300' cy='280' rx='80' ry='35' fill='none' stroke='rgba(16,185,129,0.03)' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 400px 400px;
+}
+
+/* Tabular Coordinates / Telemetry Numbers */
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Telemetry badge — hidden on mobile, show on wide screens */
+.telemetry-nav-badge {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 1280px) {
+  .telemetry-nav-badge {
+    display: flex;
+  }
+}
+
+/* Responsive Container Adaptations */
+@media (max-width: 1024px) {
+  .dashboard-split-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-actions-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+.app-navbar.scrolled {
+  box-shadow: 0 2px 16px rgba(0, 6, 3, 0.5);
+}
+
+/* Button icon micro-rotation */
+.btn-icon-rotate {
+  display: inline-flex;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:hover .btn-icon-rotate,
+a:hover .btn-icon-rotate {
+  transform: rotate(180deg);
+}
+
+/* Chart skeleton shimmer */
+.chart-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--bg-surface-elevated) 50%,
+    var(--bg-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
